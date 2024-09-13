@@ -6,6 +6,7 @@ import { lazy } from "../src/lazy";
 
 /*
 
+
 1. Basic Read/Write Operations
 
 These tests check the fundamental operations for user and admin stores.
@@ -37,13 +38,14 @@ describe("UserStore class - Basic Operations", () => {
   });
 });
 
-/*
+// /*
 
-2. Inheritance and Permissions
 
-These tests verify the permission controls and the inheritance properties in the admin store, including reading and writing permissions.
+// 2. Inheritance and Permissions
 
-*/
+// These tests verify the permission controls and the inheritance properties in the admin store, including reading and writing permissions.
+
+// */
 
 describe("AdminStore class - Inheritance and Permissions", () => {
   let adminStore: AdminStore;
@@ -61,6 +63,7 @@ describe("AdminStore class - Inheritance and Permissions", () => {
     expect(adminStore.allowedToRead("nonExistingKey")).toBe(false);
   });
 
+
   it("should not allow writing disallowed keys", () => {
     expect(adminStore.allowedToWrite("name")).toBe(false);
   });
@@ -70,13 +73,13 @@ describe("AdminStore class - Inheritance and Permissions", () => {
   });
 });
 
-/*
+// /*
 
-3. Nested Store Operations
+// 3. Nested Store Operations
 
-Tests for both user and admin stores, focusing on nested store operations.
+// Tests for both user and admin stores, focusing on nested store operations.
 
-*/
+// */
 
 describe("Nested Store Operations", () => {
   let userStore: UserStore;
@@ -95,6 +98,7 @@ describe("Nested Store Operations", () => {
   it("should allow reading nested keys in admin store", () => {
     expect(adminStore.read("user:name")).toBe("John Doe");
   });
+
 
   it("should allow writing and reading nested keys in user from admin store", () => {
     adminStore.write("user:profile:name", "John Smith");
@@ -127,13 +131,13 @@ describe("Nested Store Operations", () => {
   });
 });
 
-/*
+// /*
 
-4. Function Read Operations
+// 4. Function Read Operations
 
-This tests the ability of the AdminStore class to read from a function result.
+// This tests the ability of the AdminStore class to read from a function result.
 
-*/
+// */
 
 describe("AdminStore class - Function Read", () => {
   let adminStore: AdminStore;
@@ -148,13 +152,13 @@ describe("AdminStore class - Function Read", () => {
   });
 });
 
-/*
+// /*
 
-5. Restricted Store Operations
+// 5. Restricted Store Operations
 
-These tests validate the behavior of a restricted store, ensuring that restricted keys can't be read or written.
+// These tests validate the behavior of a restricted store, ensuring that restricted keys can't be read or written.
 
-*/
+// */
 
 describe("Restricted Store", () => {
   let store: Store;
@@ -189,13 +193,13 @@ describe("Restricted Store", () => {
   });
 });
 
-/*
+// /*
 
-6. Test Store Decorators
+// 6. Test Store Decorators
 
-These tests ensure that decorators work as expected, especially when it comes to restricted properties.
+// These tests ensure that decorators work as expected, especially when it comes to restricted properties.
 
-*/
+// */
 
 describe("Test Store - Decorators", () => {
   it("trying to set restricted property", () => {
@@ -228,13 +232,13 @@ describe("Test Store - Decorators", () => {
   });
 });
 
-/*
+// /*
 
-7. Test Default Policy Behavior
+// 7. Test Default Policy Behavior
 
-These tests ensure that default policies are correctly applied to keys with no explicit permissions set.
+// These tests ensure that default policies are correctly applied to keys with no explicit permissions set.
 
-*/
+// */
 
 describe("Test Store - Default Policy Behavior", () => {
   it("disallows writing a key with with default read permission", () => {
@@ -258,13 +262,13 @@ describe("Test Store - Default Policy Behavior", () => {
   });
 });
 
-/*
+// /*
 
-8. Test Multiple Levels of Nested Keys
+// 8. Test Multiple Levels of Nested Keys
 
-These tests ensure that the system can correctly handle multi-level nested keys.
+// These tests ensure that the system can correctly handle multi-level nested keys.
 
-*/
+// */
 
 describe("Test Store - Multiple Levels of Nested Keys", () => {
   it("allows writing and reading multi-level nested keys", () => {
@@ -274,13 +278,13 @@ describe("Test Store - Multiple Levels of Nested Keys", () => {
   });
 });
 
-/*
+// /*
 
-9. Test Behavior when the Same Key is Used Multiple Times
+// 9. Test Behavior when the Same Key is Used Multiple Times
 
-These tests verify the behavior of the system when keys are overwritten or permissions are changed.
+// These tests verify the behavior of the system when keys are overwritten or permissions are changed.
 
-*/
+// */
 
 describe("Test Store - Behavior when Same Key is Used Multiple Times", () => {
   it("overwrites key with new value", () => {
@@ -309,13 +313,13 @@ describe("Test Store - Behavior when Same Key is Used Multiple Times", () => {
   });
 });
 
-/*
+// /*
 
-10. Test Permission Inheritance
+// 10. Test Permission Inheritance
 
-These tests verify that nested keys correctly inherit permissions from their parent keys.
+// These tests verify that nested keys correctly inherit permissions from their parent keys.
 
-*/
+// */
 
 describe("Test Store - Permission Inheritance", () => {
   it("nested key inherits parent key's permissions", () => {
