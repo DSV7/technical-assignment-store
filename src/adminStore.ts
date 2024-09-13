@@ -8,7 +8,7 @@ export class AdminStore extends Store {
   @Restrict("r")
   public user: UserStore;
   @Restrict()
-  name: string = "John Doe";
+  name: string = "John po";
   @Restrict("rw")
   getCredentials = lazy(() => {
     const credentialStore = new Store();
